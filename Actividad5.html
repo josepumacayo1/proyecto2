@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Pagina de Cambio </title>
+        <link href="act5.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <h1>Calculadora de cambio de moneda</h1>
+        <form>
+          <label for="tipo-cambio">Tipo de cambio:</label>
+          <select id="tipo-cambio">
+            <option value="usd-to-pen">Dólares (USD) a Soles (PEN)</option>
+            <option value="pen-to-usd">Soles (PEN) a Dólares (USD)</option>
+            <option value="usd-to-eur">Dólares (USD) a Euros (EUR)</option>
+            <option value="eur-to-usd">Euros (EUR) a Dólares (USD)</option>
+            <option value="pen-to-eur">Soles (PEN) a Euros (EUR)</option>
+            <option value="eur-to-pen">Euros (EUR) a Soles (PEN)</option>
+          </select>
+          <br>
+          <label for="cantidad-a-cambiar">Cantidad a cambiar:</label>
+          <input type="number" id="cantidad-a-cambiar" placeholder="Ingrese cantidad">
+          <br>
+          <input type="button" value="Calcular" onclick="calcularTotal()">
+        </form>
+        
+        <script>
+            function calcularTotal() {
+              var tipoCambio = document.getElementById("tipo-cambio").value;
+              var cantidadACambiar = document.getElementById("cantidad-a-cambiar").value;
+              var total = 0;
+              
+              switch (tipoCambio) {
+                case "usd-to-pen":
+                  total = cantidadACambiar * 3.62;
+                  break;
+                case "pen-to-usd":
+                  total = cantidadACambiar / 3.62;
+                  break;
+                case "usd-to-eur":
+                  total = cantidadACambiar * 0.84;
+                  break;
+                case "eur-to-usd":
+                  total = cantidadACambiar / 0.84;
+                  break;
+                case "pen-to-eur":
+                  total = cantidadACambiar / 4.28;
+                  break;
+                case "eur-to-pen":
+                  total = cantidadACambiar * 4.28;
+                  break;
+              }
+              
+              alert("Total a recibir: " + total.toFixed(2));
+            }
+          </script>
+    </body>
